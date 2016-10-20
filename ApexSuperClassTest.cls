@@ -2,7 +2,6 @@
 private class ApexSuperClassTest {
 
     static TestMethod void myTest() {
-		Id userId = UserInfo.getUserId();
     	String salutation = 'Mr.';
     	String firstName = UserInfo.getFirstName();
     	String lastName = UserInfo.getLastName();
