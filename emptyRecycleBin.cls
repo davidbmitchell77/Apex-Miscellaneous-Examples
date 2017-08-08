@@ -1,28 +1,26 @@
-public class BofA_SC_EmptyRecycleBin {
+public class emptyRecycleBin {
     // Logged in user must have "Modify All Data" permission
     // Max records to purge at a time = 200 (purgeBatchSize)
     // Records purged can be queried for approx. 24 using "QUERY ALL"
 
-    public List<String> objNamesList = new List<String>();
-    public List<ID> ids = new List<ID>();
     public static final Integer purgeBatchSize = 200;
     public static final Integer soqlLimit = 10000;
 
-    public BofA_SC_EmptyRecycleBin () {
-        objNamesList.add('Contact');
-        objNamesList.add('Account');
-        objNamesList.add('Opportunity');
-        objNamesList.add('Lead');
-    }
-
-    public void run() {
-        for (String objName : objNamesList) {
+    public emptyRecycleBin() {
+        // Create sorted list from list custom setting:
+        Map<String, Purge_Object_Names__c> purgeObjectMap = Purge_Object_Names__c.getAll();
+        List<String> sequenceList = new List<String>();
+        sequenceList.addAll(purgeObjectMap.keySet());
+        sequenceList.sort();
+        for (String sequence : sequenceList) {
+            String objName = purgeObjectMap.get(sequence).Object_Name__c;
             runPurge(objName);
         }
     }
 
     public void runPurge(String objName) {
-        ids.clear();
+        ID[] ids = new ID[purgeBatchSize];
+        System.debug('Purging ' + objName + ' object records from recycle bin.');
         List<sObject> sObjects = Database.query(getQueryString(objName));
         for (Integer i=0; i<sObjects.size(); i++) {
             ids[i] = sObjects[i].Id;
