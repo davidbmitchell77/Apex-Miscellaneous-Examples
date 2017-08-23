@@ -1,18 +1,20 @@
 public class emptyRecycleBin {
     // Logged in user must have "Modify All Data" permission
     // Max records to purge at a time and SOQL Limit
-    // Are pulled in from custom settings
+    // are pulled in from custom settings.
     // Records purged can be queried for approx. 24 using "QUERY ALL"
 
-    public static final Integer purgeBatchSize;
-    public static final Integer soqlLimit;
+    private static final Integer purgeBatchSize;
+    private static final Integer soqlLimit;
 
     public emptyRecycleBin() {
         // Get Purge settings values
         Map<String, Purge_Settings__c> purgeSettingsMap = Purge_Settings__c.getAll();
         purgeBatchSize = purgeSettingsMap.get('Purge Batch Size').Value__c;
         soqlLimit = purgeSettingsMap.get('SOQL Limit').Value__c;
+    }
 
+    public void run() {
         // Create sorted list of object names from list custom setting
         Map<String, Purge_Object_Names__c> purgeObjectMap = Purge_Object_Names__c.getAll();
         List<String> sequenceList = new List<String>();
@@ -24,7 +26,7 @@ public class emptyRecycleBin {
         }
     }
 
-    public void runPurge(String objName) {
+    private void runPurge(String objName) {
         ID[] ids = new ID[purgeBatchSize];
         System.debug('Purging ' + objName + ' object records from recycle bin.');
         List<sObject> sObjects = Database.query(getQueryString(objName));
@@ -37,7 +39,7 @@ public class emptyRecycleBin {
         }
     }
 
-    public void emptyRecycleBin(ID[] ids) {
+    private void emptyRecycleBin(ID[] ids) {
        try {
           Database.EmptyRecycleBinResult[] results = Database.emptyRecycleBin(ids);
           for (Database.EmptyRecycleBinResult result : results) {
