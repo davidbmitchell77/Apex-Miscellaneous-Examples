@@ -1,35 +1,38 @@
-public class emptyRecycleBin {
+public class BofA_SC_EmptyRecycleBin {
     // Logged in user must have "Modify All Data" permission
     // Max records to purge at a time and SOQL Limit
     // are pulled in from custom settings.
     // Records purged can be queried for approx. 24 using "QUERY ALL"
 
-    private static final Integer purgeBatchSize;
-    private static final Integer soqlLimit;
+    private final Map<String, Purge_Settings__c> purgeSettingsMap;
+    private final Map<String, Purge_Object_Names__c> purgeObjectNamesMap;
+    private final Integer purgeBatchSize;
+    private final Integer soqlLimit;
+    private final Integer logLevel;
 
-    public emptyRecycleBin() {
-        // Get Purge settings values
-        Map<String, Purge_Settings__c> purgeSettingsMap = Purge_Settings__c.getAll();
-        purgeBatchSize = purgeSettingsMap.get('Purge Batch Size').Value__c;
-        soqlLimit = purgeSettingsMap.get('SOQL Limit').Value__c;
+    public BofA_SC_EmptyRecycleBin() {
+        purgeSettingsMap = Purge_Settings__c.getAll();
+        purgeObjectNamesMap = Purge_Object_Names__c.getAll();
+        purgeBatchSize = integer.valueOf(purgeSettingsMap.get('Purge Batch Size').Value__c);
+        soqlLimit = integer.valueOf(purgeSettingsMap.get('SOQL Limit').Value__c);
+        logLevel = integer.valueOf(purgeSettingsMap.get('Logging Level').Value__c);
     }
 
     public void run() {
-        // Create sorted list of object names from list custom setting
-        Map<String, Purge_Object_Names__c> purgeObjectMap = Purge_Object_Names__c.getAll();
+        // Create sorted list of object names from purge object map
         List<String> sequenceList = new List<String>();
-        sequenceList.addAll(purgeObjectMap.keySet());
+        sequenceList.addAll(purgeObjectNamesMap.keySet());
         sequenceList.sort();
         for (String sequence : sequenceList) {
-            String objName = purgeObjectMap.get(sequence).Object_Name__c;
+            String objName = purgeObjectNamesMap.get(sequence).Object_Name__c;
             runPurge(objName);
         }
     }
 
     private void runPurge(String objName) {
         ID[] ids = new ID[purgeBatchSize];
-        System.debug('Purging ' + objName + ' object records from recycle bin.');
         List<sObject> sObjects = Database.query(getQueryString(objName));
+        System.debug('Purging ' + string.valueOf(sObjects.size()) + ' ' + objName + ' records from the recycle bin.');
         for (Integer i=0; i<sObjects.size(); i++) {
             ids[i] = sObjects[i].Id;
             if (ids.size() == purgeBatchSize || (i+1) == sObjects.size()) {
@@ -44,7 +47,9 @@ public class emptyRecycleBin {
           Database.EmptyRecycleBinResult[] results = Database.emptyRecycleBin(ids);
           for (Database.EmptyRecycleBinResult result : results) {
              if (result.isSuccess()) {
-                System.debug('Recycled ID: ' + result.getId());
+                if (logLevel > 0) {
+                   System.debug('Purged record ' + result.getId() + ' from recycle bin.');
+                }
              } else {
                 Database.Error[] errors = result.getErrors();
                 for (Database.Error error : errors) {
@@ -65,7 +70,7 @@ public class emptyRecycleBin {
         result += objName;
         result += ' WHERE isDeleted = true';
         result += ' ORDER BY SystemModStamp DESC';
-        result += ' LIMIT ' + soqlLimit;
+        result += ' LIMIT ' + string.valueOf(soqlLimit);
         return(result);
     }
 }
