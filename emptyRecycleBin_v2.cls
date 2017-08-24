@@ -1,4 +1,4 @@
-public class BofA_SC_EmptyRecycleBin {
+public class emptyRecycleBin_v2 {
     // Logged in user must have "Modify All Data" permission
     // Max records to purge at a time and SOQL Limit
     // are pulled in from custom settings.
@@ -10,7 +10,7 @@ public class BofA_SC_EmptyRecycleBin {
     private final Integer soqlLimit;
     private final Integer logLevel;
 
-    public BofA_SC_EmptyRecycleBin() {
+    public emptyRecycleBin_v2() {
         purgeSettingsMap = Purge_Settings__c.getAll();
         purgeObjectNamesMap = Purge_Object_Names__c.getAll();
         purgeBatchSize = integer.valueOf(purgeSettingsMap.get('Purge Batch Size').Value__c);
