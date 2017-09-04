@@ -25,11 +25,11 @@ public class emptyRecycleBin_v2 {
         sequenceList.sort();
         for (String sequence : sequenceList) {
             String objName = purgeObjectNamesMap.get(sequence).Object_Name__c;
-            runPurge(objName);
+            purge(objName);
         }
     }
 
-    private void runPurge(String objName) {
+    private void purge(String objName) {
         ID[] ids = new ID[purgeBatchSize];
         List<sObject> sObjects = Database.query(getQueryString(objName));
         System.debug('Purging ' + string.valueOf(sObjects.size()) + ' ' + objName + ' records from the recycle bin.');
