@@ -12,13 +12,13 @@ global class initActivityCreatedDate implements Database.Batchable<sObject> {
     return Database.getQueryLocator(query);
   }
 
-  global void execute(Database.BatchableContext BC, List<sObject> scope)
+  global void execute(Database.BatchableContext BC, List<Task> tasks)
   {
-    for (sObject s : scope) {
-      s.CreatedDate__c = s.CreatedDate;
+    for (Task t : tasks) {
+      t.CreatedDate__c = t.CreatedDate;
     }
 
-    update scope;
+    update tasks;
   }
 
   global void finish(Database.BatchableContext BC)
