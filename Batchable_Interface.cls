@@ -16,7 +16,8 @@ global class initActivityCreatedDate implements Database.Batchable<sObject>
   {
     List<Task> tasks = new List<Task>();
 
-    for (sObject s : scope) {
+    for (sObject s : scope)
+    {
       Task t = (Task)s;
       t.CreatedDate__c = t.CreatedDate;
       tasks.add(t);
