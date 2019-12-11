@@ -1,6 +1,6 @@
 @isTest
-public class initActivityCreatedDate_Test {
-
+public class initActivityCreatedDate_Test
+{
     static testMethod void testMethod1()
     {
         Account a = new Account(Name = 'Test Account');
