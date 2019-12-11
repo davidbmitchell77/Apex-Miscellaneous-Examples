@@ -10,8 +10,8 @@ global class initActivityCreatedDate__c implements Database.Batchable<sObject> {
     return Database.getQueryLocator(query);
   }
 
-  global void execute(Database.BatchableContext BC, List<sObject> scope) {
-
+  global void execute(Database.BatchableContext BC, List<sObject> scope)
+  {
     for (sObject s : scope) {
       s.CreatedDate__c = s.CreatedDate;
     }
@@ -19,8 +19,8 @@ global class initActivityCreatedDate__c implements Database.Batchable<sObject> {
     update scope;
   }
 
-  global void finish(Database.BatchableContext BC) {
-
+  global void finish(Database.BatchableContext BC)
+  {
     AsyncApexJob job = [SELECT Id,
                                Status,
                                NumberOfErrors,
