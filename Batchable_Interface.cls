@@ -29,7 +29,9 @@ global class initActivityCreatedDate__c implements Database.Batchable<sObject> {
                                JobItemsProcessed,
                                TotalJobItems,
                                CreatedBy.Email
-                          FROM AsyncApexJob WHERE Id = :BC.getJobId()
+                          FROM AsyncApexJob
+                         WHERE Id = :BC.getJobId()
+                         LIMIT 1
                        ];
 
     Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
