@@ -1,5 +1,5 @@
-global class initActivityCreatedDate implements Database.Batchable<sObject> {
-
+global class initActivityCreatedDate implements Database.Batchable<sObject>
+{
   global final String query;
 
   global initActivityCreatedDate()
