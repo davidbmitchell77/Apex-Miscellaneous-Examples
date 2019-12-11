@@ -1,8 +1,8 @@
-global class initActivityCreatedDate__c implements Database.Batchable<sObject> {
+global class initActivityCreatedDate implements Database.Batchable<sObject> {
 
   global final String query;
 
-  global initActivityCreatedDate__c()
+  global initActivityCreatedDate()
   {
     query = 'select Id, CreatedDate, CreatedDate__c from Task order by Id DESC where CreatedDate__c = null limit 100000';
   }
