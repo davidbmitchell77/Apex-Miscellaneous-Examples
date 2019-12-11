@@ -35,9 +35,9 @@ global class initActivityCreatedDate__c implements Database.Batchable<sObject> {
                        ];
 
     Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-    String[] toAddresses = new String[] {a.CreatedBy.Email};
+    String[] toAddresses = new String[] {job.CreatedBy.Email};
     mail.setToAddresses(toAddresses);
-    mail.setSubject('Apex Batch Job initActivityCreatedDate__c ' + a.Status);
+    mail.setSubject('Apex Batch Job initActivityCreatedDate__c ' + job.Status);
     mail.setPlainTextBody('The batch apex job ' + BC.getJobId() + ' processed ' + job.TotalJobItems + ' batches with ' + job.NumberOfErrors + ' failures.');
     Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
   }
