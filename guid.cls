@@ -12,7 +12,7 @@ private class guid_test{
   static TestMethod void generate() {
     String result = '';
     result = guid.generate();
-    System.debug('GUID: ' + result);
+    System.debug('guid.generate(): ' + result);
     System.assertEquals(32, result.replace('-', '').length());
   }
 }
