@@ -3,8 +3,8 @@ public class guid
     public static String generate()
     {
         String.result = '';
-        Blob b = Crypto.GenerateAESKey(128);
-        String s = EncodingUtil.ConvertTohex(b);
+        Blob b = Crypto.generateAESKey(128);
+        String s = EncodingUtil.convertToHex(b);
         result = s.substring(0,8);
         result += '-' + s.substring(8,12);
         result += '-' + s.substring(12,16);
