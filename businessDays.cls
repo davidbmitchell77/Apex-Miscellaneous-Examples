@@ -40,7 +40,7 @@ public class businessDays
             {
                 String s = '';
                 s += dt.format(mmddyyyy) + ': ';
-                s += californiaHolidays.get(dt.format(mmddyyyy)) + ' (';
+                s += californiaHolidays.get(dt) + ' (';
                 s += dt.format(weekday) + ')';
                 System.debug(s);
             }
