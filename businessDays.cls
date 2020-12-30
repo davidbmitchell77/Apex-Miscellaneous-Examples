@@ -33,6 +33,7 @@ public class businessDays
 
         Datetime currentDate = Datetime.valueOf(System.now().format(gmt).substring(0,10) + ' 00:00:00.000Z').date();
         System.debug('currentDate.format(gmt): ' + currentDate.format(gmt));
+        
         for (Integer i=0; i<businessDays; i++)
         {
             Datetime dt = currentDate.addDays(i);
