@@ -8,42 +8,40 @@ public class BusinessDays
     /*----------------------------------------------------------------------------*/
     public static Datetime add(Integer businessDays)
     {
+        Date currentDate = Date.today();
         Integer calendarDays = 0;
         Integer saturdays = 0;
         Integer sundays = 0;
         Integer holidays = 0;
-        String gmt = 'yyyy-MM-dd HH:mm:ssZ';
         String mmddyyyy = 'MM-dd-yyyy';
         String weekday = 'EEEE';
+        String yyyymmdd = 'yyyy-MM-dd';
 
-        Map<Datetime,String> californiaHolidays = new Map<Datetime,String>();
-        californiaHolidays.put(Date.valueOf('2021-01-01'), 'New Year\'s Day');
-        californiaHolidays.put(Date.valueOf('2021-01-18'), 'Martin Luther King Jr. Day');
-        californiaHolidays.put(Date.valueOf('2021-02-15'), 'President\'s Day');
-        californiaHolidays.put(Date.valueOf('2021-03-31'), 'Cesar Chavez Day');
-        californiaHolidays.put(Date.valueOf('2021-05-31'), 'Memorial Day');
-        californiaHolidays.put(Date.valueOf('2021-07-05'), 'Independence Day');
-        californiaHolidays.put(Date.valueOf('2021-09-06'), 'Labor Day');
-        californiaHolidays.put(Date.valueOf('2021-09-09'), 'California Admission Day');
-        californiaHolidays.put(Date.valueOf('2021-09-24'), 'Native American Day');
-        californiaHolidays.put(Date.valueOf('2021-11-11'), 'Veteran\'s Day');
-        californiaHolidays.put(Date.valueOf('2021-11-25'), 'Thanksgiving');
-        californiaHolidays.put(Date.valueOf('2021-12-24'), 'Christmas Day');
+        Map<String,String> californiaHolidays = new Map<String,String>();
+        californiaHolidays.put('2021-01-01', 'New Year\'s Day');
+        californiaHolidays.put('2021-01-18', 'Martin Luther King Jr. Day');
+        californiaHolidays.put('2021-02-15', 'President\'s Day');
+        californiaHolidays.put('2021-03-31', 'Cesar Chavez Day');
+        californiaHolidays.put('2021-05-31', 'Memorial Day');
+        californiaHolidays.put('2021-07-05', 'Independence Day');
+        californiaHolidays.put('2021-09-06', 'Labor Day');
+        californiaHolidays.put('2021-09-09', 'California Admission Day');
+        californiaHolidays.put('2021-09-24', 'Native American Day');
+        californiaHolidays.put('2021-11-11', 'Veteran\'s Day');
+        californiaHolidays.put('2021-11-25', 'Thanksgiving');
+        californiaHolidays.put('2021-12-24', 'Christmas Day');
 
-        Datetime currentDate = Datetime.valueOf(System.now().format(gmt).substring(0,10) + ' 00:00:00.000Z').date();
-        System.debug('currentDate.format(gmt): ' + currentDate.format(gmt));
-        
         for (Integer i=0; i<businessDays; i++)
         {
-            Datetime dt = currentDate.addDays(i);
-            if (dt.format(weekday) == 'Saturday'  ) { saturdays++; }
-            if (dt.format(weekday) == 'Sunday'    ) { sundays++;   }
-            if (californiaHolidays.containsKey(dt)) { holidays++;  }
-            if (californiaHolidays.containsKey(dt))
+            Datetime dt = Datetime.valueOf(String.valueOf(currentDate.addDays(i)) + ' 00:00:00Z');
+            if (dt.format(weekday) == 'Saturday') { saturdays++; }
+            if (dt.format(weekday) == 'Sunday'  ) { sundays++;   }
+            if (californiaHolidays.containsKey(dt.format(yyyymmdd))  ) { holidays++;  }
+            if (californiaHolidays.containsKey(dt.format(yyyymmdd))  )
             {
                 String s = '';
                 s += dt.format(mmddyyyy) + ': ';
-                s += californiaHolidays.get(dt) + ' (';
+                s += californiaHolidays.get(dt.format(yyyymmdd)) + ' (';
                 s += dt.format(weekday) + ')';
                 System.debug(s);
             }
@@ -61,7 +59,7 @@ public class BusinessDays
         System.debug('Sundays: ' + sundays);
         System.debug('Holidays: ' + holidays);
         System.debug('Total calendar days: ' + calendarDays);
-        System.debug((currentDate.date() + ' + ' + calendarDays + ' calendar days = ' + result).replace(' 00:00:00', ''));
+        System.debug(('Date.valueOf(\'' + currentDate + '\').addDays(' + calendarDays + ') = ' + result).replace(' 00:00:00', ''));
 
         return result;
     }
