@@ -4,7 +4,7 @@ public class businessDays
     /* @class         - businessDays                                              */
     /* @date          - 29-DEC-2020                                               */
     /* @author        - David B. Mitchell                                         */
-    /* @description   - Calculates date based on number of business days added.   */
+    /* @description   - Calulates date based on number of business days.          */
     /*----------------------------------------------------------------------------*/
     public Datetime add(Integer businessDays)
     {
@@ -16,27 +16,27 @@ public class businessDays
         String mmddyyyy = 'MM-dd-yyyy';
         String weekday = 'EEEE';
 
-        Map<String,String> companyHolidays = new Map<String,String>();
-        companyHolidays.put('01-01-2021', 'New Year\'s Day');
-        companyHolidays.put('01-18-2021', 'Martin Luther King Jr. Day');
-        companyHolidays.put('02-15-2021', 'President\'s Day');
-        companyHolidays.put('03-31-2021', 'Cesar Chavez Day');
-        companyHolidays.put('05-31-2021', 'Memorial Day');
-        companyHolidays.put('07-05-2021', 'Independence Day');
-        companyHolidays.put('09-06-2021', 'Labor Day');
-        companyHolidays.put('09-09-2021', 'California Admission Day');
-        companyHolidays.put('09-24-2021', 'Native American Day');
-        companyHolidays.put('11-11-2021', 'Veteran\'s Day');
-        companyHolidays.put('11-25-2021', 'Thanksgiving');
-        companyHolidays.put('12-24-2021', 'Christmas Day');
+        Map<Datetime,String> companyHolidays = new Map<Datetime,String>();
+        molinaHolidays.put(Date.valueOf('2021-01-01'), 'New Year\'s Day');
+        molinaHolidays.put(Date.valueOf('2021-01-18'), 'Martin Luther King Jr. Day');
+        molinaHolidays.put(Date.valueOf('2021-02-15'), 'President\'s Day');
+        molinaHolidays.put(Date.valueOf('2021-03-31'), 'Cesar Chavez Day');
+        molinaHolidays.put(Date.valueOf('2021-05-31'), 'Memorial Day');
+        molinaHolidays.put(Date.valueOf('2021-07-05'), 'Independence Day');
+        molinaHolidays.put(Date.valueOf('2021-09-06'), 'Labor Day');
+        molinaHolidays.put(Date.valueOf('2021-09-09'), 'California Admission Day');
+        molinaHolidays.put(Date.valueOf('2021-09-24'), 'Native American Day');
+        molinaHolidays.put(Date.valueOf('2021-11-11'), 'Veteran\'s Day');
+        molinaHolidays.put(Date.valueOf('2021-11-25'), 'Thanksgiving');
+        molinaHolidays.put(Date.valueOf('2021-12-24'), 'Christmas Day');
 
         for (Integer i=0; i<businessDays; i++)
         {
             Datetime dt = currentDate.addDays(i);
             if (dt.format(weekday) == 'Saturday') { saturdays++; }
             if (dt.format(weekday) == 'Sunday'  ) { sundays++;   }
-            if (companyHolidays.containsKey(dt.format(mmddyyyy))) { holidays++; }
-            if (companyHolidays.containsKey(dt.format(mmddyyyy)))
+            if (companyHolidays.containsKey(dt) ) { holidays++; }
+            if (companyHolidays.containsKey(dt) )
             {
                 String s = '';
                 s += dt.format(mmddyyyy) + ': ';
