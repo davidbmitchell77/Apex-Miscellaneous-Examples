@@ -4,7 +4,7 @@ public class businessDays
     /* @class         - businessDays                                              */
     /* @date          - 29-DEC-2020                                               */
     /* @author        - David B. Mitchell                                         */
-    /* @description   - Calulates date based on number of business days.          */
+    /* @description   - Calculates date based on number of business days.added.   */
     /*----------------------------------------------------------------------------*/
     public Datetime add(Integer businessDays)
     {
