@@ -17,18 +17,18 @@ public class businessDays
         String weekday = 'EEEE';
 
         Map<Datetime,String> companyHolidays = new Map<Datetime,String>();
-        molinaHolidays.put(Date.valueOf('2021-01-01'), 'New Year\'s Day');
-        molinaHolidays.put(Date.valueOf('2021-01-18'), 'Martin Luther King Jr. Day');
-        molinaHolidays.put(Date.valueOf('2021-02-15'), 'President\'s Day');
-        molinaHolidays.put(Date.valueOf('2021-03-31'), 'Cesar Chavez Day');
-        molinaHolidays.put(Date.valueOf('2021-05-31'), 'Memorial Day');
-        molinaHolidays.put(Date.valueOf('2021-07-05'), 'Independence Day');
-        molinaHolidays.put(Date.valueOf('2021-09-06'), 'Labor Day');
-        molinaHolidays.put(Date.valueOf('2021-09-09'), 'California Admission Day');
-        molinaHolidays.put(Date.valueOf('2021-09-24'), 'Native American Day');
-        molinaHolidays.put(Date.valueOf('2021-11-11'), 'Veteran\'s Day');
-        molinaHolidays.put(Date.valueOf('2021-11-25'), 'Thanksgiving');
-        molinaHolidays.put(Date.valueOf('2021-12-24'), 'Christmas Day');
+        companyHolidays.put(Date.valueOf('2021-01-01'), 'New Year\'s Day');
+        companyHolidays.put(Date.valueOf('2021-01-18'), 'Martin Luther King Jr. Day');
+        companyHolidays.put(Date.valueOf('2021-02-15'), 'President\'s Day');
+        companyHolidays.put(Date.valueOf('2021-03-31'), 'Cesar Chavez Day');
+        companyHolidays.put(Date.valueOf('2021-05-31'), 'Memorial Day');
+        companyHolidays.put(Date.valueOf('2021-07-05'), 'Independence Day');
+        companyHolidays.put(Date.valueOf('2021-09-06'), 'Labor Day');
+        companyHolidays.put(Date.valueOf('2021-09-09'), 'California Admission Day');
+        companyHolidays.put(Date.valueOf('2021-09-24'), 'Native American Day');
+        companyHolidays.put(Date.valueOf('2021-11-11'), 'Veteran\'s Day');
+        companyHolidays.put(Date.valueOf('2021-11-25'), 'Thanksgiving');
+        companyHolidays.put(Date.valueOf('2021-12-24'), 'Christmas Day');
 
         for (Integer i=0; i<businessDays; i++)
         {
