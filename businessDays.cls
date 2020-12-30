@@ -8,7 +8,7 @@ public class businessDays
     /*----------------------------------------------------------------------------*/
     public Datetime add(Integer businessDays)
     {
-        Datetime currentDate = System.now().date();
+        Datetime currentDate = System.now().date().addDays(1);
         Integer calendarDays = 0;
         Integer saturdays = 0;
         Integer sundays = 0;
