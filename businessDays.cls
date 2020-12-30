@@ -1,4 +1,4 @@
-public class businessDays
+public class BusinessDays
 {
     /*----------------------------------------------------------------------------*/
     /* @class         - businessDays                                              */
