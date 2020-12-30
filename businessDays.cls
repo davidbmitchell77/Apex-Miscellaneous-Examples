@@ -16,31 +16,31 @@ public class businessDays
         String mmddyyyy = 'MM-dd-yyyy';
         String weekday = 'EEEE';
 
-        Map<String,String> companyHolidays = new Map<String,String>();
-        companyHolidays.put('01-01-2021', 'New Year\'s Day');
-        companyHolidays.put('01-18-2021', 'Martin Luther King Jr. Day');
-        companyHolidays.put('02-15-2021', 'President\'s Day');
-        companyHolidays.put('03-31-2021', 'Cesar Chavez Day');
-        companyHolidays.put('05-31-2021', 'Memorial Day');
-        companyHolidays.put('07-05-2021', 'Independence Day');
-        companyHolidays.put('09-06-2021', 'Labor Day');
-        companyHolidays.put('09-09-2021', 'California Admission Day');
-        companyHolidays.put('09-24-2021', 'Native American Day');
-        companyHolidays.put('11-11-2021', 'Veteran\'s Day');
-        companyHolidays.put('11-25-2021', 'Thanksgiving');
-        companyHolidays.put('12-24-2021', 'Christmas Day');
+        Map<String,String> californiaHolidays = new Map<String,String>();
+        californiaHolidays.put('01-01-2021', 'New Year\'s Day');
+        californiaHolidays.put('01-18-2021', 'Martin Luther King Jr. Day');
+        californiaHolidays.put('02-15-2021', 'President\'s Day');
+        californiaHolidays.put('03-31-2021', 'Cesar Chavez Day');
+        californiaHolidays.put('05-31-2021', 'Memorial Day');
+        californiaHolidays.put('07-05-2021', 'Independence Day');
+        californiaHolidays.put('09-06-2021', 'Labor Day');
+        californiaHolidays.put('09-09-2021', 'California Admission Day');
+        californiaHolidays.put('09-24-2021', 'Native American Day');
+        californiaHolidays.put('11-11-2021', 'Veteran\'s Day');
+        californiaHolidays.put('11-25-2021', 'Thanksgiving');
+        californiaHolidays.put('12-24-2021', 'Christmas Day');
 
         for (Integer i=0; i<businessDays; i++)
         {
             Datetime dt = currentDate.addDays(i+1); // you lose 1 day wen you cast a date as datetime
             if (dt.format(weekday) == 'Saturday') { saturdays++; }
             if (dt.format(weekday) == 'Sunday'  ) { sundays++;   }
-            if (companyHolidays.containsKey(dt.format(mmddyyyy))) { holidays++; }
-            if (companyHolidays.containsKey(dt.format(mmddyyyy)))
+            if (californiaHolidays.containsKey(dt.format(mmddyyyy))) { holidays++; }
+            if (californiaHolidays.containsKey(dt.format(mmddyyyy)))
             {
                 String s = '';
                 s += dt.format(mmddyyyy) + ': ';
-                s += companyHolidays.get(dt.format(mmddyyyy)) + ' (';
+                s += californiaHolidays.get(dt.format(mmddyyyy)) + ' (';
                 s += dt.format(weekday) + ')';
                 System.debug(s);
             }
