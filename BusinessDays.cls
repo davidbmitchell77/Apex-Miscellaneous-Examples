@@ -36,8 +36,8 @@ public class BusinessDays
             Datetime dt = Datetime.valueOf(String.valueOf(currentDate.addDays(i)) + ' 00:00:00Z');
             if (dt.format(weekday) == 'Saturday') { saturdays++; }
             if (dt.format(weekday) == 'Sunday'  ) { sundays++;   }
-            if (californiaHolidays.containsKey(dt.format(yyyymmdd))  ) { holidays++;  }
-            if (californiaHolidays.containsKey(dt.format(yyyymmdd))  )
+            if (californiaHolidays.containsKey(dt.format(yyyymmdd))) { holidays++;  }
+            if (californiaHolidays.containsKey(dt.format(yyyymmdd)))
             {
                 String s = '';
                 s += dt.format(mmddyyyy) + ': ';
