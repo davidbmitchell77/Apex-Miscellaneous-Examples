@@ -1,7 +1,7 @@
 public class BusinessDays
 {
     /*----------------------------------------------------------------------------*/
-    /* @class         - businessDays                                              */
+    /* @class         - BusinessDays                                              */
     /* @date          - 29-DEC-2020                                               */
     /* @author        - David B. Mitchell                                         */
     /* @description   - Calculates date based on number of business days added.   */
