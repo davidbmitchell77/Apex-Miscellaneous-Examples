@@ -16,6 +16,7 @@ public class businessDays
         String mmddyyyy = 'MM-dd-yyyy';
         String weekday = 'EEEE';
 
+        // TO DO: Load map via custom metadata SOQL insted of map.put()
         Map<Datetime,String> californiaHolidays = new Map<Datetime,String>();
         californiaHolidays.put(Date.valueOf('2021-01-01'), 'New Year\'s Day');
         californiaHolidays.put(Date.valueOf('2021-01-18'), 'Martin Luther King Jr. Day');
