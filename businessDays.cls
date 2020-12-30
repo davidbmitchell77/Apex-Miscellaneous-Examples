@@ -8,11 +8,11 @@ public class businessDays
     /*----------------------------------------------------------------------------*/
     public Datetime add(Integer businessDays)
     {
-        Datetime currentDate = System.now().date().addDays(1);
         Integer calendarDays = 0;
         Integer saturdays = 0;
         Integer sundays = 0;
         Integer holidays = 0;
+        String gmt = 'yyyy-MM-dd HH:mm:ssZ';
         String mmddyyyy = 'MM-dd-yyyy';
         String weekday = 'EEEE';
 
@@ -30,6 +30,8 @@ public class businessDays
         californiaHolidays.put(Date.valueOf('2021-11-25'), 'Thanksgiving');
         californiaHolidays.put(Date.valueOf('2021-12-24'), 'Christmas Day');
 
+        Datetime currentDate = Datetime.valueOf(System.now().format(gmt).substring(0,10) + ' 00:00:00.000Z').date();
+        System.debug('currentDate.format(gmt): ' + currentDate.format(gmt));
         for (Integer i=0; i<businessDays; i++)
         {
             Datetime dt = currentDate.addDays(i);
