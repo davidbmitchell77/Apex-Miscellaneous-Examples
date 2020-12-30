@@ -6,7 +6,7 @@ public class businessDays
     /* @author        - David B. Mitchell                                         */
     /* @description   - Calculates date based on number of business days added.   */
     /*----------------------------------------------------------------------------*/
-    public Datetime add(Integer businessDays)
+    public static Datetime add(Integer businessDays)
     {
         Integer calendarDays = 0;
         Integer saturdays = 0;
