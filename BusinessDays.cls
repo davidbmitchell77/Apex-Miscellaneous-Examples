@@ -22,6 +22,7 @@ public class BusinessDays
         californiaHolidays.put('2021-01-18', 'Martin Luther King Jr. Day');
         californiaHolidays.put('2021-02-15', 'President\'s Day');
         californiaHolidays.put('2021-03-31', 'Cesar Chavez Day');
+        californiaHolidays.put('2021-05-05', 'Cinco de Mayo');
         californiaHolidays.put('2021-05-31', 'Memorial Day');
         californiaHolidays.put('2021-07-05', 'Independence Day');
         californiaHolidays.put('2021-09-06', 'Labor Day');
