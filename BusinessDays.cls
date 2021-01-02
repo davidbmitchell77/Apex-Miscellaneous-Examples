@@ -28,6 +28,7 @@ public class BusinessDays
         californiaHolidays.put('2021-09-06', 'Labor Day');
         californiaHolidays.put('2021-09-09', 'California Admission Day');
         californiaHolidays.put('2021-09-24', 'Native American Day');
+        californiaHolidays.put('2021-10-11', 'Columbus Day');
         californiaHolidays.put('2021-11-11', 'Veteran\'s Day');
         californiaHolidays.put('2021-11-25', 'Thanksgiving');
         californiaHolidays.put('2021-12-24', 'Christmas Day');
