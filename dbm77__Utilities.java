@@ -1,4 +1,4 @@
-public class dbm77_Utilities
+public class dbm77__Utilities
 {
     /*----------------------------------------------------------------------------*/
     /* @class         - dbm77__Utilities                                          */
