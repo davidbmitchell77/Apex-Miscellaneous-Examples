@@ -1,7 +1,7 @@
 public class Infosys_Utilities
 {
     /*----------------------------------------------------------------------------*/
-    /* @class         - Infosys_Utilities                                         */
+    /* @class         - DBM77_Utilities                                           */
     /* @date          - 07-MAR-2021                                               */
     /* @author        - David B. Mitchell (Infosys / Molina AMS Team)             */
     /* @description   - Miscellaneous apex class utility methods.                 */
@@ -48,7 +48,7 @@ public class Infosys_Utilities
 
         private void logException(String methodName, Exception e)
         {
-            String outerClassName = 'Infosys_Utilities';
+            String outerClassName = 'DBM77_Utilities';
             String innerClassName = String.valueOf(this).substring(0,String.valueOf(this).indexOf(':'));
             Integer lineNumber = e.getLineNumber();
             String message = e.getMessage();
