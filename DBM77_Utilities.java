@@ -1,4 +1,4 @@
-public class Infosys_Utilities
+public class DBM77_Utilities
 {
     /*----------------------------------------------------------------------------*/
     /* @class         - DBM77_Utilities                                           */
