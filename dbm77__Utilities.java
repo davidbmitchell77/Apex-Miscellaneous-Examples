@@ -3,7 +3,7 @@ public class dbm77__Utilities
     /*----------------------------------------------------------------------------*/
     /* @class         - dbm77__Utilities                                          */
     /* @date          - 07-MAR-2021                                               */
-    /* @author        - David B. Mitchell (Infosys / Molina AMS Team)             */
+    /* @author        - David B. Mitchell                                         */
     /* @description   - Apex Utility Methods class.                               */
     /*----------------------------------------------------------------------------*/
     public class RecordTypes
