@@ -85,7 +85,7 @@ public class dbm77__Utilities
         public String generateWithoutDashes()
         {
             String result = '';
-            result = generate();
+            result = generate().replace('-', '');
             return result;
         }
 
@@ -132,7 +132,7 @@ public class dbm77__Utilities
         public String generateWithoutDashes()
         {
             String result = '';
-            result = generate();
+            result = generate().replace('-', '');
             return result;
         }
 
