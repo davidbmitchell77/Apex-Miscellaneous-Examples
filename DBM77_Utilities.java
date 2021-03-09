@@ -4,7 +4,7 @@ public class DBM77_Utilities
     /* @class         - DBM77_Utilities                                           */
     /* @date          - 07-MAR-2021                                               */
     /* @author        - David B. Mitchell (Infosys / Molina AMS Team)             */
-    /* @description   - Miscellaneous apex class utility methods.                 */
+    /* @description   - Apex Utility Methods class.                               */
     /*----------------------------------------------------------------------------*/
     public class RecordTypes
     {
@@ -63,6 +63,86 @@ public class DBM77_Utilities
             s += 'Message: ' + message + '\n';
             s += 'Stack Trace: ' + stackTrace; 
             System.debug(s);
+        }
+    }
+
+    public class guid
+    {
+        public String generate()
+        {
+            String result = '';
+            Blob b = Crypto.generateAESKey(128);
+            String s = EncodingUtil.convertToHex(b);
+            result = s.substring(0,8);
+            result += '-' + s.substring(8,12);
+            result += '-' + s.substring(12,16);
+            result += '-' + s.substring(16,20);
+            result += '-' + s.substring(20);
+            result = result.toUpperCase();
+            return result;
+        }
+
+        public Boolean isValid(String guid)
+        {
+            Boolean result = false;
+            if (!String.isEmpty(guid)) {
+                if (guid.length() == 36) {
+                    if (guid.split('-').size() == 5) {
+                        if (guid.split('-')[0].length() == 8) {
+                            if (guid.split('-')[1].length() == 4) {
+                                if (guid.split('-')[2].length() == 4) {
+                                    if (guid.split('-')[3].length() == 4) {
+                                        if (guid.split('-')[4].length() == 12) {
+                                            result = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+    }
+
+    public class uuid
+    {
+        public String generate()
+        {
+            String result = '';
+            Blob b = Crypto.generateAESKey(128);
+            String s = EncodingUtil.convertToHex(b);
+            result = s.substring(0,8);
+            result += '-' + s.substring(8,12);
+            result += '-' + s.substring(12,16);
+            result += '-' + s.substring(16,20);
+            result += '-' + s.substring(20);
+            result = result.tolowerCase();
+            return result;
+        }
+
+        public Boolean isValid(String uuid)
+        {
+            Boolean result = false;
+            if (!String.isEmpty(uuid)) {
+                if (uuid.length() == 36) {
+                    if (uuid.split('-').size() == 5) {
+                        if (uuid.split('-')[0].length() == 8) {
+                            if (uuid.split('-')[1].length() == 4) {
+                                if (uuid.split('-')[2].length() == 4) {
+                                    if (uuid.split('-')[3].length() == 4) {
+                                        if (uuid.split('-')[4].length() == 12) {
+                                            result = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return result;
         }
     }
 }
