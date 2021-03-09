@@ -1,7 +1,7 @@
-public class DBM77_Utilities
+public class dbm77_Utilities
 {
     /*----------------------------------------------------------------------------*/
-    /* @class         - DBM77_Utilities                                           */
+    /* @class         - dbm77__Utilities                                          */
     /* @date          - 07-MAR-2021                                               */
     /* @author        - David B. Mitchell (Infosys / Molina AMS Team)             */
     /* @description   - Apex Utility Methods class.                               */
@@ -48,7 +48,7 @@ public class DBM77_Utilities
 
         private void logException(String methodName, Exception e)
         {
-            String outerClassName = 'DBM77_Utilities';
+            String outerClassName = 'dbm77__Utilities';
             String innerClassName = String.valueOf(this).substring(0,String.valueOf(this).indexOf(':'));
             Integer lineNumber = e.getLineNumber();
             String message = e.getMessage();
@@ -79,6 +79,13 @@ public class DBM77_Utilities
             result += '-' + s.substring(16,20);
             result += '-' + s.substring(20);
             result = result.toUpperCase();
+            return result;
+        }
+
+        public String generateWithoutDashes()
+        {
+            String result = '';
+            result = generate();
             return result;
         }
 
@@ -119,6 +126,13 @@ public class DBM77_Utilities
             result += '-' + s.substring(16,20);
             result += '-' + s.substring(20);
             result = result.tolowerCase();
+            return result;
+        }
+
+        public String generateWithoutDashes()
+        {
+            String result = '';
+            result = generate();
             return result;
         }
 
