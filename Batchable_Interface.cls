@@ -24,7 +24,7 @@ global class initActivityCreatedDate implements Database.Batchable<sObject>
         }
 
         update tasks;
-  }
+    }
 
     global void finish(Database.BatchableContext BC)
     {
