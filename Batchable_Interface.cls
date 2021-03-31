@@ -7,7 +7,7 @@ global class initActivityCreatedDate implements Database.Batchable<sObject>
         query = 'SELECT Id, CreatedDate, CreatedDate__c FROM Task WHERE CreatedDate__c = null ORDER BY Id DESC LIMIT 100000';
     }
 
-    global Database.QueryLocator start(Database.BatchableContext BC)
+    global Database.QueryLocator start(Database.BatchableContext bc)
     {
         return Database.getQueryLocator(query);
     }
