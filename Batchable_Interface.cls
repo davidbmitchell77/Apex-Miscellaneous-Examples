@@ -12,21 +12,20 @@ global class initActivityCreatedDate implements Database.Batchable<sObject>
         return Database.getQueryLocator(query);
     }
 
-    global void execute(Database.BatchableContext BC, List<sObject> scope)
+    global void execute(Database.BatchableContext bc, List<sObject> scope)
     {
-        List<Task> tasks = new List<Task>();
-
-        for (sObject s : scope)
+        for (sObject obj : scope)
         {
-            Task t = (Task)s;
-            t.CreatedDate__c = t.CreatedDate;
-            tasks.add(t);
+            Datetime value = obj.get('CreatedDate');
+            obj.put('CreatedDate__c', value);
         }
 
-        update tasks;
+        if (scope.size() > 0) {
+           Database.update(scope, false);
+        }
     }
 
-    global void finish(Database.BatchableContext BC)
+    global void finish(Database.BatchableContext bc)
     {
         AsyncApexJob job = [SELECT Id,
                                    Status,
@@ -35,7 +34,7 @@ global class initActivityCreatedDate implements Database.Batchable<sObject>
                                    TotalJobItems,
                                    CreatedBy.Email
                               FROM AsyncApexJob
-                             WHERE Id = :BC.getJobId()
+                             WHERE Id = :bc.getJobId()
                              LIMIT 1
         ];
 
