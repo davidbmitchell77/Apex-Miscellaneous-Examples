@@ -16,7 +16,7 @@ global class initActivityCreatedDate implements Database.Batchable<sObject>
     {
         for (sObject obj : scope)
         {
-            Datetime value = obj.get('CreatedDate');
+            Datetime value = (Datetime)obj.get('CreatedDate');
             obj.put('CreatedDate__c', value);
         }
 
