@@ -14,6 +14,6 @@ public class myQueueableApex_Test
         String jobId = System.enqueueJob(new myQueueableApex());
         Test.stopTest();
 
-        System.assertEquals(18, jobId.length()); 
+        System.assertEquals(18, jobId.length());
     }
 }
