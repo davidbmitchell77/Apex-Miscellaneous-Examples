@@ -23,8 +23,7 @@ public class myQueueableApex implements Queueable, Finalizer
 
         System.debug('Begin: executing queueable job ' + jobId + '.');
 
-        myQueueableApex myFinalizer = new myQueueableApex();
-        System.attachFinalizer(myFinalizer);
+        System.attachFinalizer(new myQueueableApex());
 
         myFinalizer.addLog(System.now(), 'About to do some work...', jobId);
 
