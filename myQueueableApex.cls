@@ -14,7 +14,7 @@ public class myQueueableApex implements Queueable, Finalizer
     public myQueueableApex()
     {
         all = false;
-        allOrNone = true;
+        allOrNone = true; 
     }
 
     public void execute(QueueableContext QC)
