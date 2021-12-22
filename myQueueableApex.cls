@@ -53,12 +53,12 @@ public class myQueueableApex implements Queueable, Finalizer
         {
             System.debug('Parent queueable job [' + parentJobId + '] completed successfully.');
             System.debug('Enqueueing another instance of the queueable...');
-            String newJobId = (!Test.isRunningTest() ? System.enqueueJob(new myQueueableApex()) : null); // This call fails after 5 retries.
-            System.debug('Enqueued new job: ' + newJobId + '.');
         }
         else
         {
             System.debug('Parent queueable job [' + parentJobId + '] failed due to unhandled exception: ' + FC.getException().getMessage());
+            String newJobId = System.enqueueJob(new myQueueableApex()); // This call fails after 5 retries.
+            System.debug('Enqueued new job: ' + newJobId + '.');
         }
  
         System.debug('Completed: execution of finalizer attached to queueable job: ' + parentJobId + '.');
