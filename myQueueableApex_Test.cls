@@ -1,5 +1,5 @@
 @isTest
-public class myQueueableApex_Test
+private class myQueueableApex_Test
 {
     /*----------------------------------------------------------------------------*/
     /* @class         - myQueueableApex_Test                                      */
