@@ -1,4 +1,4 @@
-global class mySchedulableApex implements Schedulable, Database.Batchable<sObject>
+global class mySchedulableApex implements System.Schedulable, Database.Batchable<sObject>
 {
     /*----------------------------------------------------------------------------*/
     /* @class         - mySchedulableApex                                         */
