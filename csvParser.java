@@ -59,7 +59,7 @@ for (String row : csv.split('\n'))
             if (value > '')
             {
                 String buffer = value;
-                if (value.startsWith('"') && (!value.contains('&quot;'))) { buffer +=  '&comma;'; }
+                if (value.startsWith('"') && (!value.contains('&quot;'))) { buffer += '&comma;'; }
                 if (!buffer.endsWith('&comma;')) { buffer += ','; }
                 body += buffer;
             }
