@@ -45,7 +45,7 @@ csv += '\n';
 for (String row : csv.split('\n'))
 {
     if (!row.replace('""', '&quot;').contains('"')) {
-      body += row + '\n' ;      
+      body += row + '\n';
     }
     else
     {
@@ -67,4 +67,5 @@ for (String row : csv.split('\n'))
 
 body = body.replace('&quot;', '""');
 body = body.removeEnd('\n');
+
 System.debug(LoggingLevel.INFO, 'body:\n' + body);
