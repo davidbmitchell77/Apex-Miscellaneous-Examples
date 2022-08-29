@@ -37,7 +37,7 @@ csv += ',' + '90210';
 csv += '\n';
 
 csv += ''  + '0000000004';
-csv += ',' + '"Paul ""Ace"" Frehley"';
+csv += ',' + '"Paul ""Ace"" Frehley,, Inc."';
 csv += ',' + '(212) 222-5978';
 csv += ',' + '88 Citrus Way';
 csv += ',' + 'Bronx';
@@ -59,7 +59,7 @@ for (String row : csv.split('\n'))
             if (value > '')
             {
                 String buffer = value;
-                if (value.startsWith('"') && (!value.contains('&quot;'))) { buffer += '&comma;'; }
+                if (value.startsWith('"') && (!value.endsWith('"'))) { buffer += '&comma;'; }
                 if (!buffer.endsWith('&comma;')) { buffer += ','; }
                 body += buffer;
             }
