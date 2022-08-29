@@ -37,11 +37,11 @@ csv += ',' + '90210';
 csv += '\n';
 
 csv += ''  + '0000000004';
-csv += ',' + '"Paul ""Ace"" Frehley, Inc."';
+csv += ',' + '"Paul ""Ace"" Frehley,, Inc."';
 csv += ',' + '(212) 222-5978';
 csv += ',' + '88 Citrus Way';
 csv += ',' + 'Bronx';
-csv += ',' + 'NY';
+csv += ',' + '';
 csv += ',' + '10468';
 csv += '\n';
 
@@ -61,13 +61,16 @@ for (String row : csv.split('\n'))
                 String buffer = value;
                 if (value.startsWith('"') && (!value.endsWith('"'))) { buffer += '&comma;'; }
                 if (!buffer.endsWith('&comma;')) { buffer += ','; }
-                body += buffer;
+                body += buffer.replace('&comma;,', '&comma;');
+            } else {
+                body += ',';
             }
         }
         body = body.removeEnd(',') + '\n';
     }
 }
 
+body = body.replace('&comma;,', '&comma;');
 body = body.replace('&quot;', '""');
 body = body.removeEnd('\n');
 System.debug(LoggingLevel.INFO, 'body:\n' + body);
