@@ -10,7 +10,7 @@ String csv = 'Id,Name,Phone,Address,City,State,PostalCode';
 csv += '\n';
 
 csv += ''  + '0000000001';
-csv += ',' + '"Blue Oasis Technologies,, Inc."';
+csv += ',' + '"Blue Oasis Technologies, Inc."';
 csv += ',' + '(619) 216-1001';
 csv += ',' + '380 Fourth Street';
 csv += ',' + 'Downey';
