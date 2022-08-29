@@ -41,7 +41,7 @@ csv += ',' + '"Paul ""Ace"" Frehley,, Inc."';
 csv += ',' + '(212) 222-5978';
 csv += ',' + '88 Citrus Way';
 csv += ',' + 'Bronx';
-csv += ',' + '';
+csv += ',' + 'NY';
 csv += ',' + '10468';
 csv += '\n';
 
