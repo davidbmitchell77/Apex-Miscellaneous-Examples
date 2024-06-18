@@ -1,3 +1,9 @@
+/*----------------------------------------------------------------------------*/
+/* @class         - AggregateExample.cls                                      */
+/* @date          - 16-JUN-2024                                               */
+/* @author        - David B. Mitchell                                         */
+/* @description   - Sample aggregate result SOQL query.                       */
+/*----------------------------------------------------------------------------*/
 for (AggregateResult agr : [SELECT Account.Name,
                                    MAX(ExpectedRevenue) MaxExpectedRevenue,
                                    MIN(ExpectedRevenue) MinExpectedRevenue,
