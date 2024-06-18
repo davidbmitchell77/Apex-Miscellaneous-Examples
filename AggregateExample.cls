@@ -12,8 +12,8 @@ for (AggregateResult agr : [SELECT Account.Name,
                                    COUNT(Id)
                               FROM Opportunity
                              WHERE Account.Name != null
-                            GROUP BY Account.Name
-                            ORDER BY MAX(ExpectedRevenue) DESC
+                          GROUP BY Account.Name
+                          ORDER BY MAX(ExpectedRevenue) DESC
     
 ]) {
     String s = '';
