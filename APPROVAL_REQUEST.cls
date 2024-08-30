@@ -27,7 +27,7 @@ public class APPROVAL_REQUEST {
         // Use the ID from the newly created item to specify the item to be worked
         req.setWorkitemId(newWorkItemIds.get(0));
         Approval.ProcessResult apr =  Approval.process(req);
-        System.assert(true, apr.isSuccess());
+        System.assertEquals(true, apr.isSuccess());
         System.assertEquals('Approved', result2.getInstanceStatus());
     }
 }
