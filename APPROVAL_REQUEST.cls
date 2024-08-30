@@ -1,4 +1,4 @@
-public class APPROVAL_REQUEST {
+public without sharing class APPROVAL_REQUEST {
 
     public APPROVAL_REQUEST() {
     }
