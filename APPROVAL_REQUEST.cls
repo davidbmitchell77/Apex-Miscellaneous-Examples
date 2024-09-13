@@ -17,7 +17,6 @@ public without sharing class APPROVAL_REQUEST {
     }
 
     public void approve(List<Id> workItemIds) {
-        List<Id> newWorkItemIds = workitemIds();
         Approval.ProcessWorkitemRequest req = new Approval.ProcessWorkitemRequest();
         req.setNextApproverIds(new Id[] { UserInfo.getUserId() });
         req.setAction('Approve');
