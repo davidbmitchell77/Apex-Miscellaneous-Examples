@@ -21,7 +21,7 @@ public class ApprovalRequest {
         req.setNextApproverIds(new List<Id>{ UserInfo.getUserId() });
         req.setWorkitemId(workItemIds.get(0));
         req.setAction('Approve');
-        req.setComments('Approving for record Id: ' + workItemIds.get(0));
+        req.setComments('Approving record Id: ' + workItemIds.get(0));
         Approval.ProcessResult result = Approval.process(req);
         return result.isSuccess();
     }
