@@ -48,7 +48,7 @@ public with sharing class AccountUltimateParents_Batch implements Database.Batch
             }
         }
     }
-    
+
     public void finish(Database.BatchableContext bc) {
         if (isFirstRun || !accountChildIds.isEmpty()) {
             AccountUltimateParents_Batch batchJob = new AccountUltimateParents_Batch();
