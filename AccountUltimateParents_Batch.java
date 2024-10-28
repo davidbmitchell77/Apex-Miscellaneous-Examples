@@ -3,6 +3,7 @@ public with sharing class AccountUltimateParents_Batch implements Database.Batch
     public Map<Id,Id> accountParentIds;
     public Map<Id,Id> accountChildIds;
     public Boolean isFirstRun;
+
     private final Integer batchSize;
 
     public AccountUltimateParents_Batch() {
