@@ -1,6 +1,6 @@
 public class AccountUltimateParents_Scheduler implements System.Schedulable {
 
-    public final Integer batchSize;
+    private final Integer batchSize;
 
     public AccountUltimateParents_Scheduler() {
         this.batchSize = 200;
